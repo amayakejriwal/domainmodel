@@ -110,18 +110,18 @@ public class Job {
     
     func raise(byAmount amount : Double) {
         switch type {
-            case Job.JobType.Hourly(var h):
+            case Job.JobType.Hourly(let h):
                 type = Job.JobType.Hourly(h + amount)
-            case Job.JobType.Salary(var s):
+            case Job.JobType.Salary(let s):
                 type = Job.JobType.Salary(s + UInt(amount))
         }
     }
     
     func raise(byPercent percent : Double) {
         switch type {
-            case Job.JobType.Hourly(var h):
+            case Job.JobType.Hourly(let h):
                 type = Job.JobType.Hourly(h * (1 + percent))
-            case Job.JobType.Salary(var s):
+            case Job.JobType.Salary(let s):
                 let newSal = Double(s) * (1 + percent)
                 type = Job.JobType.Salary(UInt(newSal))
         }
